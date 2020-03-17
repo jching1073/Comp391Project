@@ -125,6 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenWidthInUnits: 16
-  maxX: 15
-  minX: 1
+  maxX: 15.3
+  minX: 0.8
   speed: 12

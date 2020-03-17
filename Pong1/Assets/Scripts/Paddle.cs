@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
-    float speed;
+    [SerializeField] float speed;
     float hight;
 
     string input;
-    bool isRight;
+    public bool isRight;
     // Start is called before the first frame update
     void Start()
     {
         hight = transform.localScale.y;
-        speed = 5f;
+        //speed = 5f;
     }
     public void InIt(bool isRightPaddle)
     {
@@ -25,7 +25,7 @@ public class Paddle : MonoBehaviour
             pos = new Vector2 (GameManager.topRight.x, 0);
             pos -= Vector2.right * transform.localScale.x;
 
-            input = "PaddleRight";
+            input = "PaddleLeft";
         }  
       else
         {
@@ -33,7 +33,7 @@ public class Paddle : MonoBehaviour
             pos = new Vector2(GameManager.bottomLeft.x, 0);
             pos += Vector2.right * transform.localScale.x;
 
-            input = "PaddleLeft";
+            input = "PaddleRight";
 
 
 
@@ -46,6 +46,14 @@ public class Paddle : MonoBehaviour
     void Update()
     {
         float move = Input.GetAxis(input) * Time.deltaTime * speed;
+        if (transform.position.y < GameManager.bottomLeft.y + hight / 2 && move < 0)
+        {
+            move = 0;
+        }
+        if (transform.position.y > GameManager.topRight.y - hight / 2 && move > 0)
+        {
+            move = 0;
+        }
 
         transform.Translate (move * Vector2.up);
     }

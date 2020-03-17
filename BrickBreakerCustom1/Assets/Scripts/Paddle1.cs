@@ -6,8 +6,8 @@ public class Paddle : MonoBehaviour
 {
     [SerializeField] float screenWidthInUnits = 16f;
     //configuration paramiters
-    [SerializeField] float maxX = 15f;
-    [SerializeField] float minX = 1f;
+    [SerializeField] float maxX = 16f;
+    [SerializeField] float minX = 0f;
     public float speed;
     
     // Start is called before the first frame update
